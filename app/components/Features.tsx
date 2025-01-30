@@ -70,23 +70,6 @@ export default function Features() {
           </p>
         </div>
       </div>
-
-      <div className="mt-20 text-center">
-        <h2 className="text-3xl font-bold mb-4">Make your Discord yours</h2>
-        <p className="text-[#F6F6F6] mb-8">
-          Stop limiting yourself to what Discord gives you. Get Replugged!
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button className="h-12 px-8 text-lg rounded-full bg-[#5865F2] text-white hover:bg-[#4752C4]">
-            <DownloadIcon className="mr-2 h-5 w-5" />
-            Download
-          </Button>
-          <Button variant="secondary" className="h-12 px-8 text-lg rounded-full bg-[#23272A] hover:bg-[#2C2F33]">
-            Discord Server
-          </Button>
-        </div>
-      </div>
     </div>
   )
 }
-

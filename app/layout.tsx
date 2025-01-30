@@ -1,5 +1,6 @@
 import './globals.css'
 import Navigation from './components/Navigation'
+import Footer from './components/Footer'
 
 export default function RootLayout({
   children,
@@ -12,9 +13,9 @@ export default function RootLayout({
         <div className="min-h-screen bg-[#313338]">
           <Navigation />
           {children}
+      	  <Footer />
         </div>
       </body>
     </html>
   )
 }
-

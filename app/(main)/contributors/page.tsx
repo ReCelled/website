@@ -6,44 +6,6 @@ import { GithubIcon } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export default function ContributorsPage() {
-	// https://replugged.dev/api/v1/stats/contributors
-
-	// const contributors = [
-	// 	{
-	// 		name: "John Doe",
-	// 		role: "Lead Developer",
-	// 		github: "johndoe",
-	// 		contributions: 156,
-	// 		avatar: "/placeholder.svg?height=200&width=200",
-	// 	},
-	// 	{
-	// 		name: "Jane Smith",
-	// 		role: "Plugin Developer",
-	// 		github: "janesmith",
-	// 		contributions: 89,
-	// 		avatar: "/placeholder.svg?height=200&width=200",
-	// 	},
-	// 	{
-	// 		name: "Alex Johnson",
-	// 		role: "Theme Designer",
-	// 		github: "alexj",
-	// 		contributions: 67,
-	// 		avatar: "/placeholder.svg?height=200&width=200",
-	// 	},
-	// ];
-
-	// {
-	//   "contributors": [],
-	//   "developers": [],
-	//   "staff": [
-	//   {
-	//   "_id": "1000992611840049192",
-	//   "avatar": "5d1a7c7ec81d636e931e7c120ac2b50f",
-	//   "discriminator": "7287",
-	//   "username": "Replugged"
-	//   }
-	//   ],
-
 	const [contributors, setContributors] = useState<Contributor[]>([]);
 	const [loading, setLoading] = useState(false);
 
@@ -66,17 +28,14 @@ export default function ContributorsPage() {
 					...data.developers.map((d: Contributor) => ({
 						...d,
 						role: "Developer",
-						contributions: 0,
 					})),
 					...data.staff.map((s: Contributor) => ({
 						...s,
 						role: "Staff",
-						contributions: 0,
 					})),
 					...data.contributors.map((c: Contributor) => ({
 						...c,
 						role: "Contributor",
-						contributions: 0,
 					})),
 				];
 
@@ -111,31 +70,27 @@ export default function ContributorsPage() {
 			</div>
 			<div className="container mx-auto px-6 py-8">
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-					{contributors.map((contributor) => (
+					{contributors.map((contributor) => {
+						const username = contributor.discriminator === "0" ? contributor.username : `${contributor.username}#${contributor.discriminator}`;
+						return (
 						<Card
-							key={contributor.username}
+							key={contributor._id}
 							className="bg-[#2B2D31] border-none p-6 text-center"
 						>
 							<img
-								src={
-									contributor.avatar
-										? `https://replugged.dev/api/v1/avatars/${contributor._id}.png`
-										: "/placeholder.svg?height=200&width=200"
+								src={`https://replugged.dev/api/v1/avatars/${contributor._id}.png`
 								}
-								alt={contributor.username}
+								alt={username}
 								className="w-32 h-32 rounded-full mx-auto mb-4"
 							/>
 							<h3 className="text-xl font-semibold mb-1">
-								{contributor.username}
+								{username}
 							</h3>
-							<p className="text-sm text-gray-400 mb-3">{contributor.role}</p>
-							<p className="text-sm text-gray-300 mb-4">{0} contributions</p>
-							{/* <Button className="w-full bg-[#404EED] hover:bg-[#4752C4]">
-								<GithubIcon className="mr-2 h-4 w-4" />
-								View GitHub
-							</Button> */}
+							<p className="text-sm text-gray-400">{contributor.role}</p>
 						</Card>
-					))}
+						);
+					}
+					)}
 				</div>
 				{loading && <p className="text-center mt-4">Loading more plugins...</p>}
 			</div>
