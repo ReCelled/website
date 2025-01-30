@@ -35,14 +35,6 @@ export default function Navigation() {
 							<Link href="/contributors" className="text-white hover:underline">
 								Contributors
 							</Link>
-							<a
-								href="https://discord.gg/replugged"
-								className="text-white hover:underline"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								Discord Server
-							</a>
 						</div>
 					</div>
 					{isLoggedIn ? (

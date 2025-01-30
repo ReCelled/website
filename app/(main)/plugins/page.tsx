@@ -29,8 +29,9 @@ type Plugin = {
 export default function PluginsPage() {
 	const [plugins, setPlugins] = useState<Plugin[]>([]);
 	const [page, setPage] = useState(1);
-	const [loading, setLoading] = useState(false);
+	const [loading, setLoading] = useState(true);
 	const [query, setQuery] = useState("");
+	const [noMore, setNoMore] = useState(false);
 
 	useEffect(() => {
 		const fetchPlugins = async () => {
@@ -41,15 +42,15 @@ export default function PluginsPage() {
 				);
 				const data = await response.json();
 
-				// if no results, stop loading
-				if (data.results.length === 0) {
-					setLoading(false);
-					return;
+				// Make results unique
+				if (data.results.length !== 0) {
+					setPlugins((prevPlugins) => [...prevPlugins, ...(data.results.filter((p: Plugin) => !prevPlugins.some((prev) => prev.id === p.id)) as Plugin[])]);
+				} else {
+					setNoMore(true);
 				}
-
-				setPlugins((prevPlugins) => [...prevPlugins, ...data.results]);
 			} catch (error) {
 				console.error("Error fetching plugins:", error);
+				setNoMore(true);
 			} finally {
 				setLoading(false);
 			}
@@ -62,13 +63,17 @@ export default function PluginsPage() {
 		setQuery(event.target.value);
 		setPlugins([]); // Clear previous results
 		setPage(1); // Reset to first page
+		setNoMore(false); // Reset noMore
 	};
 
 	useEffect(() => {
+		if (noMore || loading) return
+
 		const handleScroll = () => {
+			console.log(window.innerHeight + document.documentElement.scrollTop, document.documentElement.offsetHeight);
 			if (
-				window.innerHeight + document.documentElement.scrollTop ===
-				document.documentElement.offsetHeight
+				window.innerHeight + document.documentElement.scrollTop >=
+				document.documentElement.offsetHeight - 100
 			) {
 				setPage((prevPage) => prevPage + 1);
 			}
@@ -76,7 +81,7 @@ export default function PluginsPage() {
 
 		window.addEventListener("scroll", handleScroll);
 		return () => window.removeEventListener("scroll", handleScroll);
-	}, []);
+	}, [noMore, loading])
 
 	return (
 		<div className="min-h-screen bg-[#313338] text-white">
@@ -98,7 +103,8 @@ export default function PluginsPage() {
 						<CustomCard key={plugin.id} item={plugin} />
 					))}
 				</div>
-				{loading && <p className="text-center mt-4">Loading more plugins...</p>}
+				{!noMore && loading && <p className="text-center mt-4">Loading plugins...</p>}
+				{!loading && plugins?.length === 0 && <p className="text-center mt-4">No plugins found</p>}
 			</div>
 		</div>
 	);
