@@ -42,7 +42,7 @@ export default function Navigation() {
 							<Link href="/dashboard" className="text-white hover:underline">
 								Dashboard
 							</Link>
-							<Link href="/logout" className="text-white hover:underline">
+							<Link href="https://replugged.dev/api/v1/logout" className="text-white hover:underline">
 								Logout
 							</Link>
 						</div>
