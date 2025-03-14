@@ -1,21 +1,23 @@
-import './globals.css'
-import Navigation from './components/Navigation'
-import Footer from './components/Footer'
+import "./globals.css";
+import Footer from "./components/Footer";
+import Navigation from "./components/Navigation";
 
 export default function RootLayout({
-  children,
+	children,
 }: {
-  children: React.ReactNode
+	children: React.ReactNode;
 }) {
-  return (
-    <html lang="en">
-      <body>
-        <div className="min-h-screen bg-[#313338]">
-          <Navigation />
-          {children}
-      	  <Footer />
-        </div>
-      </body>
-    </html>
-  )
+	return (
+		<html lang="en">
+			<link rel="icon" href="/favicon.ico" />
+
+			<body>
+				<div className="min-h-screen bg-[#313338]">
+					<Navigation />
+					{children}
+					<Footer />
+				</div>
+			</body>
+		</html>
+	);
 }

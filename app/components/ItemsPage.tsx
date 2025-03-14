@@ -13,7 +13,8 @@ type ItemPageProps = {
 	loadingText: string;
 };
 
-const BASE_URL = "https://recelled.dev/api/store/list";
+const BASE_URL =
+	"https://corsproxy.io/?url=https://recelled.dev/api/store/list";
 
 export default function ItemsPage<
 	Item extends {
@@ -43,12 +44,17 @@ export default function ItemsPage<
 
 				// Make results unique
 				if (data.results.length !== 0) {
-					setItems((prevItems) => [
-						...prevItems,
-						...(data.results.filter(
-							(p: Item) => !prevItems.some((prev) => prev.id === p.id),
-						) as Item[]),
-					]);
+					setItems((prevItems) => {
+						const combinedItems = [...prevItems, ...data.results] as Item[];
+						const uniqueItems = combinedItems.filter(
+							(item, index, self) =>
+								index ===
+								self.findIndex(
+									(t) => t.id.toLowerCase() === item.id.toLowerCase(),
+								),
+						);
+						return uniqueItems;
+					});
 				} else {
 					setNoMore(true);
 				}

@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 
-const isLoggedIn = true
+const isLoggedIn = true;
 
 export default function Navigation() {
 	return (
@@ -12,11 +12,11 @@ export default function Navigation() {
 					<div className="flex items-center gap-10">
 						<Link href="/">
 							<Image
-								src="/logo.svg?height=34&width=124"
+								src="./logo.jpg"
 								alt="Recelled"
 								width={124}
 								height={34}
-								className="w-auto h-[34px]"
+								className="w-auto h-[34px] rounded-lg"
 							/>
 						</Link>
 						<div className="hidden md:flex items-center gap-8">
@@ -42,7 +42,10 @@ export default function Navigation() {
 							<Link href="/dashboard" className="text-white hover:underline">
 								Dashboard
 							</Link>
-							<Link href="https://recelled.dev/api/v1/logout" className="text-white hover:underline">
+							<Link
+								href="https://recelled.dev/api/v1/logout"
+								className="text-white hover:underline"
+							>
 								Logout
 							</Link>
 						</div>

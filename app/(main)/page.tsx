@@ -6,6 +6,11 @@ export default function Home() {
 	return (
 		<>
 			<title>Recelled - Home</title>
+			<meta
+				name="description"
+				content="Enhance your Discord experience with new features and looks. Recelled makes your Discord truly yours."
+			/>
+
 			<main className="min-h-screen bg-[#1E1F22] text-white">
 				<div className="container mx-auto px-6">
 					<div className="pt-[120px] pb-20 text-center max-w-4xl mx-auto">
