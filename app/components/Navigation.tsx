@@ -37,26 +37,6 @@ export default function Navigation() {
 							</Link>
 						</div>
 					</div>
-					{isLoggedIn ? (
-						<div className="flex items-center gap-8">
-							<Link href="/dashboard" className="text-white hover:underline">
-								Dashboard
-							</Link>
-							<Link
-								href="https://recelled.dev/api/v1/logout"
-								className="text-white hover:underline"
-							>
-								Logout
-							</Link>
-						</div>
-					) : (
-						<Button
-							variant="secondary"
-							className="rounded-full bg-[#5865F2] text-white hover:bg-[#4752C4]"
-						>
-							Login with Discord
-						</Button>
-					)}
 				</div>
 			</div>
 		</nav>
