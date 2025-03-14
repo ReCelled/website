@@ -25,5 +25,5 @@ type Plugin = {
 };
 
 export default function PluginsPage() {
-	return (<ItemsPage<Plugin> url="https://replugged.dev/api/store/list/plugin?page=${page}&items=12&query=${query}" title="Plugins" subtitle="Discover new plugins for your Discord server." search="Search for plugins" notFoundText="No plugins found." loadingText="Loading plugins..." />)
+	return (<ItemsPage<Plugin> url="/plugin?page=${page}&items=12&query=${query}" title="Plugins" subtitle="Discover new plugins for your Discord server." search="Search for plugins" notFoundText="No plugins found." loadingText="Loading plugins..." />)
 }

@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import SearchBar from "@/app/components/Search";
 import CustomCard from "@/app/components/Card";
+import SearchBar from "@/app/components/Search";
+import { useEffect, useState } from "react";
 
 type ItemPageProps = {
 	url: string;
@@ -12,6 +12,8 @@ type ItemPageProps = {
 	notFoundText: string;
 	loadingText: string;
 };
+
+const BASE_URL = 'https://recelled.dev/api/store/list';
 
 export default function ItemsPage<Item extends {
 	id: string;
@@ -32,7 +34,7 @@ export default function ItemsPage<Item extends {
 			setLoading(true);
 			try {
 				const replacedUrl = url.replace("${page}", page.toString()).replace("${query}", query);
-				const response = await fetch(replacedUrl);
+				const response = await fetch(BASE_URL + replacedUrl);
 				const data = await response.json();
 
 				// Make results unique

@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import SearchBar from "@/app/components/Search";
 import CustomCard from "@/app/components/Card";
 import ItemsPage from "@/app/components/ItemsPage";
+import SearchBar from "@/app/components/Search";
+import { useEffect, useState } from "react";
 
 type Theme = {
 	id: string;
@@ -28,5 +28,5 @@ type Theme = {
 };
 
 export default function ThemesPage() {
-	return (<ItemsPage<Theme> url="https://replugged.dev/api/store/list/theme?page=${page}&items=12&query=${query}" title="Themes" subtitle="Discover new themes for your Discord server." search="Search for themes" notFoundText="No themes found." loadingText="Loading themes..." />)
+	return (<ItemsPage<Theme> url="/theme?page=${page}&items=12&query=${query}" title="Themes" subtitle="Discover new themes for your Discord server." search="Search for themes" notFoundText="No themes found." loadingText="Loading themes..." />)
 }
