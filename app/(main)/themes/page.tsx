@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import SearchBar from "@/app/components/Search";
 import CustomCard from "@/app/components/Card";
+import ItemsPage from "@/app/components/ItemsPage";
 
 type Theme = {
 	id: string;
@@ -27,79 +28,5 @@ type Theme = {
 };
 
 export default function ThemesPage() {
-	const [themes, setThemes] = useState<Theme[]>([]);
-	const [page, setPage] = useState(1);
-	const [loading, setLoading] = useState(false);
-	const [query, setQuery] = useState("");
-
-	useEffect(() => {
-		const fetchPlugins = async () => {
-			setLoading(true);
-			try {
-				const response = await fetch(
-					`https://replugged.dev/api/store/list/theme?page=${page}&items=12&query=${query}`,
-				);
-				const data = await response.json();
-
-				// if no results, stop loading
-				if (data.results.length === 0) {
-					setLoading(false);
-					return;
-				}
-
-				setThemes((prevTheme) => [...prevTheme, ...data.results]);
-			} catch (error) {
-				console.error("Error fetching themes:", error);
-			} finally {
-				setLoading(false);
-			}
-		};
-
-		fetchPlugins();
-	}, [page, query]);
-
-	const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-		setQuery(event.target.value);
-		setThemes([]); // Clear previous results
-		setPage(1); // Reset to first page
-	};
-
-	useEffect(() => {
-		const handleScroll = () => {
-			if (
-				window.innerHeight + document.documentElement.scrollTop ===
-				document.documentElement.offsetHeight
-			) {
-				setPage((prevPage) => prevPage + 1);
-			}
-		};
-
-		window.addEventListener("scroll", handleScroll);
-		return () => window.removeEventListener("scroll", handleScroll);
-	}, []);
-
-	return (
-		<div className="min-h-screen bg-[#313338] text-white">
-			<div className="bg-[#404EED] py-20">
-				<div className="container mx-auto px-6">
-					<h1 className="text-4xl font-bold mb-4">Themes</h1>
-					<p className="text-lg opacity-90">
-						Customize Discord's appearance with beautiful themes
-					</p>
-				</div>
-			</div>
-			<div className="container mx-auto px-6 py-8">
-				<SearchBar
-					placeholder="Search plugins..."
-					handleSearch={handleSearch}
-				/>
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-					{themes.map((theme) => (
-						<CustomCard key={theme.id} item={theme} />
-					))}
-				</div>
-				{loading && <p className="text-center mt-4">Loading more themes...</p>}
-			</div>
-		</div>
-	);
+	return (<ItemsPage<Theme> url="https://replugged.dev/api/store/list/theme?page=${page}&items=12&query=${query}" title="Themes" subtitle="Discover new themes for your Discord server." search="Search for themes" notFoundText="No themes found." loadingText="Loading themes..." />)
 }
