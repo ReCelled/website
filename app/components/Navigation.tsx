@@ -13,7 +13,7 @@ export default function Navigation() {
 						<Link href="/">
 							<Image
 								src="/logo.svg?height=34&width=124"
-								alt="Replugged"
+								alt="Recelled"
 								width={124}
 								height={34}
 								className="w-auto h-[34px]"
@@ -42,7 +42,7 @@ export default function Navigation() {
 							<Link href="/dashboard" className="text-white hover:underline">
 								Dashboard
 							</Link>
-							<Link href="https://replugged.dev/api/v1/logout" className="text-white hover:underline">
+							<Link href="https://recelled.dev/api/v1/logout" className="text-white hover:underline">
 								Logout
 							</Link>
 						</div>

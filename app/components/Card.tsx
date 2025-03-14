@@ -52,7 +52,7 @@ export default function CustomCard({
 						<Button
 							className="bg-[#404EED] hover:bg-[#4752C4]"
 							onClick={() =>
-								window.open(`https://replugged.dev/store/${item.id}`, "_blank")
+								window.open(`https://recelled.dev/store/${item.id}`, "_blank")
 							}
 						>
 							Install

@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { GithubIcon } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function ContributorsPage() {
 	const [contributors, setContributors] = useState<Contributor[]>([]);
@@ -14,7 +14,7 @@ export default function ContributorsPage() {
 			setLoading(true);
 			try {
 				const response = await fetch(
-					"https://replugged.dev/api/v1/stats/contributors",
+					"https://recelled.dev/api/v1/stats/contributors",
 				);
 				const data = await response.json();
 
@@ -59,12 +59,16 @@ export default function ContributorsPage() {
 	}, []);
 
 	return (
+		<>
+		<title>
+			Recelled - Contributors
+		</title>
 		<div className="min-h-screen bg-[#313338] text-white">
 			<div className="bg-[#404EED] py-20">
 				<div className="container mx-auto px-6">
 					<h1 className="text-4xl font-bold mb-4">Contributors</h1>
 					<p className="text-lg opacity-90">
-						Meet the amazing people behind Replugged
+						Meet the amazing people behind Recelled
 					</p>
 				</div>
 			</div>
@@ -78,7 +82,7 @@ export default function ContributorsPage() {
 							className="bg-[#2B2D31] border-none p-6 text-center"
 						>
 							<img
-								src={`https://replugged.dev/api/v1/avatars/${contributor._id}.png`
+								src={`https://recelled.dev/api/v1/avatars/${contributor._id}.png`
 								}
 								alt={username}
 								className="w-32 h-32 rounded-full mx-auto mb-4"
@@ -95,5 +99,6 @@ export default function ContributorsPage() {
 				{loading && <p className="text-center mt-4">Loading more plugins...</p>}
 			</div>
 		</div>
+		</>
 	);
 }

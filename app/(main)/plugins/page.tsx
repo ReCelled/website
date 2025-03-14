@@ -25,5 +25,17 @@ type Plugin = {
 };
 
 export default function PluginsPage() {
-	return (<ItemsPage<Plugin> url="/plugin?page=${page}&items=12&query=${query}" title="Plugins" subtitle="Discover new plugins for your Discord server." search="Search for plugins" notFoundText="No plugins found." loadingText="Loading plugins..." />)
+	return (
+		<>
+			<title>Recelled - Plugins</title>
+			<ItemsPage<Plugin>
+				url="/plugin?page=${page}&items=12&query=${query}"
+				title="Plugins"
+				subtitle="Discover new plugins for your Discord server."
+				search="Search for plugins"
+				notFoundText="No plugins found."
+				loadingText="Loading plugins..."
+			/>
+		</>
+	);
 }

@@ -28,5 +28,17 @@ type Theme = {
 };
 
 export default function ThemesPage() {
-	return (<ItemsPage<Theme> url="/theme?page=${page}&items=12&query=${query}" title="Themes" subtitle="Discover new themes for your Discord server." search="Search for themes" notFoundText="No themes found." loadingText="Loading themes..." />)
+	return (
+		<>
+			<title>Recelled - Themes</title>
+			<ItemsPage<Theme>
+				url="/theme?page=${page}&items=12&query=${query}"
+				title="Themes"
+				subtitle="Discover new themes for your Discord server."
+				search="Search for themes"
+				notFoundText="No themes found."
+				loadingText="Loading themes..."
+			/>
+		</>
+	);
 }

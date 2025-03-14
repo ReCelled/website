@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { Cog, Paintbrush, Tag, Feather, Home, DownloadIcon } from 'lucide-react'
+import { Cog, DownloadIcon, Feather, Home, Paintbrush, Tag } from 'lucide-react'
 import Link from 'next/link'
 
 export default function Features() {
@@ -7,7 +7,7 @@ export default function Features() {
     <div className="py-20">
       <h2 className="text-3xl font-bold text-center mb-4">Zero-compromise experience</h2>
       <p className="text-center text-[#F6F6F6] mb-16 max-w-2xl mx-auto">
-        Replugged has everything you need to enhance your Discord client, without compromising on performance or security.
+        Recelled has everything you need to enhance your Discord client, without compromising on performance or security.
       </p>
       
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -53,10 +53,10 @@ export default function Features() {
           </div>
           <h3 className="text-xl font-bold mb-2">Lightweight</h3>
           <p className="text-[#B9BBBE] mb-4">
-            Replugged is designed to consume as little resources as possible, and provides to plugin developers powerful tools to build efficient and robust plugins.
+            Recelled is designed to consume as little resources as possible, and provides to plugin developers powerful tools to build efficient and robust plugins.
           </p>
           <p className="text-sm text-[#B9BBBE] opacity-75">
-            Note that Replugged still runs on top of the official client, and can't magically make it lighter. We just do our best to not consume even more resources.
+            Note that Recelled still runs on top of the official client, and can't magically make it lighter. We just do our best to not consume even more resources.
           </p>
         </div>
 
