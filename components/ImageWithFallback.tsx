@@ -8,7 +8,7 @@ export const ImageWithFallback = ({
 }: {
 	fallback?: string;
 	alt: string;
-	src: string | null;
+	src?: string;
 	className?: string;
 }) => {
 	const [error, setError] = useState(false);
@@ -22,7 +22,7 @@ export const ImageWithFallback = ({
 		<img
 			alt={alt}
 			onError={() => setError(true)}
-			src={error ? fallback : src || fallback}
+			src={error ? `${fallback}?orig=${src}` : src || fallback}
 			className={className}
 		/>
 	);

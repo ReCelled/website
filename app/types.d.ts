@@ -11,3 +11,12 @@ type Contributor = {
 	username: string
 	role: string
 }
+
+type PluginOrTheme = {
+	id: string;
+	name: string;
+	description: string;
+	image?: string | string[];
+	source: string;
+	author: Author | Author[];
+}

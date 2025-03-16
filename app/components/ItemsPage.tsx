@@ -16,16 +16,14 @@ type ItemPageProps = {
 const BASE_URL =
 	"https://corsproxy.io/?url=https://recelled.dev/api/store/list";
 
-export default function ItemsPage<
-	Item extends {
-		id: string;
-		name: string;
-		description: string;
-		image: string;
-		source: string;
-		author: Author | Author[];
-	},
->({ url, title, subtitle, search, notFoundText, loadingText }: ItemPageProps) {
+export default function ItemsPage<Item extends PluginOrTheme>({
+	url,
+	title,
+	subtitle,
+	search,
+	notFoundText,
+	loadingText,
+}: ItemPageProps) {
 	const [items, setItems] = useState<Item[]>([]);
 	const [page, setPage] = useState(1);
 	const [loading, setLoading] = useState(true);

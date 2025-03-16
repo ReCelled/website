@@ -5,14 +5,7 @@ import { Card } from "@/components/ui/card";
 export default function CustomCard({
 	item,
 }: {
-	item: {
-		id: string;
-		name: string;
-		description: string;
-		image: string | null;
-		source: string;
-		author: Author | Author[];
-	};
+	item: PluginOrTheme;
 }) {
 	if (!item) return null;
 
@@ -39,7 +32,7 @@ export default function CustomCard({
 			className="bg-[#2B2D31] border-none flex flex-col items-stretch"
 		>
 			<ImageWithFallback
-				src={item.image}
+				src={Array.isArray(item.image) ? item.image[0] : item.image}
 				alt={item.name}
 				className="w-full h-48 object-cover rounded-t-lg min-h-[192px]"
 			/>
