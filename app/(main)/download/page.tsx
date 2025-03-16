@@ -33,7 +33,7 @@ export default function DownloadPage() {
 										asChild
 									>
 										<a
-											href="https://github.com/recelled/tauri-installer/releases/latest/download/recelled-installer-windows.exe"
+											href="https://github.com/recelled/receller/releases/latest/download/receller-windows.exe"
 											download
 										>
 											Download for Windows
@@ -61,7 +61,7 @@ export default function DownloadPage() {
 										asChild
 									>
 										<a
-											href="https://github.com/recelled/tauri-installer/releases/latest/download/recelled-installer-macos.app.tar.gz"
+											href="https://github.com/recelled/receller/releases/latest/download/receller-macos.app.tar.gz"
 											download
 										>
 											Download for macOS
@@ -98,7 +98,7 @@ export default function DownloadPage() {
 											asChild
 										>
 											<a
-												href="https://github.com/recelled/tauri-installer/releases/latest/download/recelled-installer-linux.AppImage"
+												href="https://github.com/recelled/receller/releases/latest/download/receller-linux.AppImage"
 												download
 											>
 												Download .AppImage
@@ -110,7 +110,7 @@ export default function DownloadPage() {
 											asChild
 										>
 											<a
-												href="https://github.com/recelled/tauri-installer/releases/latest/download/recelled-installer-linux.deb"
+												href="https://github.com/recelled/receller/releases/latest/download/receller-linux.deb"
 												download
 											>
 												Download .deb

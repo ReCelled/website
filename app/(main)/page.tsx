@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { DownloadIcon } from "lucide-react";
+import Link from "next/link";
 import Features from "../components/Features";
 
 export default function Home() {
@@ -22,16 +23,20 @@ export default function Home() {
 							Recelled makes your Discord truly <em>yours</em>.
 						</p>
 						<div className="flex flex-col sm:flex-row gap-4 justify-center">
-							<Button className="h-12 px-8 text-lg rounded-full bg-[#5865F2] text-white hover:bg-[#4752C4]">
-								<DownloadIcon className="mr-2 h-5 w-5" />
-								Download
-							</Button>
-							<Button
-								variant="secondary"
-								className="h-12 px-8 text-lg rounded-full bg-[#23272A] hover:bg-[#2C2F33]"
-							>
-								Discord Server
-							</Button>
+							<Link href="/download">
+								<Button className="h-12 px-8 text-lg rounded-full bg-[#5865F2] text-white hover:bg-[#4752C4]">
+									<DownloadIcon className="mr-2 h-5 w-5" />
+									Download
+								</Button>
+							</Link>
+							<Link href="https://discord.gg/7rXabDakFr">
+								<Button
+									variant="secondary"
+									className="h-12 px-8 text-lg rounded-full bg-[#23272A] hover:bg-[#2C2F33]"
+								>
+									Discord Server
+								</Button>
+							</Link>
 						</div>
 					</div>
 					<Features />
